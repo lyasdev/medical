@@ -1,6 +1,6 @@
 pipeline {
   
-    agent 'jdk-15.0.1_9-alpine'
+    agent any
        environment
        {
           dockerHome= tool 'myDocker'
