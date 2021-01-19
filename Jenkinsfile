@@ -7,7 +7,11 @@ pipeline {
           
            image 'adoptopenjdk/openjdk15'
        }
-     docker
+     
+  }
+  agent
+  {
+    docker
        {
            image 'maven'
        }
