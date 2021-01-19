@@ -1,11 +1,14 @@
 pipeline {
     agent any
      
-    tools {
-    	maven 'apache-maven-3.6.3'
-    	jdk 'AdoptOpenJDK-15.0.1+9'
-    }
-    
+     agent 
+  {
+       docker
+       {
+           image 'apache-maven-3.6.3'
+           image 'AdoptOpenJDK-15.0.1+9'
+       }
+  }
     stages {
         stage('build') {
             steps {
