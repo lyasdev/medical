@@ -4,7 +4,7 @@ pipeline {
   {
        docker
        {
-           image 'apache-maven-3.6.3'
+           image 'maven'
            image 'adoptopenjdk/openjdk15'
        }
   }
