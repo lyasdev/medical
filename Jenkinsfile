@@ -1,12 +1,12 @@
 pipeline {
   
-    agent any
+    agent 'jdk-15.0.1_9-alpine'
        environment
        {
           dockerHome= tool 'myDocker'
           mavenHome= tool 'myMaven'
           myJdkHome= tool 'myJdk'
-         PATH="$dockerHome/bin:$mavenHome/bin:$myJdkHome/bin:$PATH"
+         PATH="$dockerHome/bin:$mavenHome/bin:$myJdkHome/jdk-15.0.2/bin:$PATH"
        }
     stages {
         stage('build') {
