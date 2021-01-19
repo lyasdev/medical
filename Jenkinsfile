@@ -1,7 +1,6 @@
 pipeline {
   
      agent any
-  {
        environment
        {
           dockerHome= tool 'myDocker'
@@ -9,9 +8,6 @@ pipeline {
           jdkHome= tool 'myJdk' 
          PATH="$dockerHome/bin:$mavenHome/bin:$jdkHome/bin:$PATH"
        }
-     
-  }
- 
     stages {
         stage('build') {
             steps {
