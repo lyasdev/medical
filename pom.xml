@@ -11,7 +11,7 @@
 	<groupId>com.lyaslim</groupId>
 	<artifactId>medical</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>medical</name>
+	<name>projet medical</name>
 	<description>platefome medicale</description>
 
 	<properties>
