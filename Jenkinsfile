@@ -4,8 +4,12 @@ pipeline {
   {
        docker
        {
-           image 'maven'
+          
            image 'adoptopenjdk/openjdk15'
+       }
+     docker
+       {
+           image 'maven'
        }
   }
     stages {
