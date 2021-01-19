@@ -5,7 +5,7 @@ pipeline {
        docker
        {
            image 'apache-maven-3.6.3'
-           image 'AdoptOpenJDK-15.0.1+9'
+           image 'adoptopenjdk/openjdk15'
        }
   }
     stages {
