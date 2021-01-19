@@ -6,7 +6,7 @@ pipeline {
           dockerHome= tool 'myDocker'
           mavenHome= tool 'myMaven'
           myJdkHome= tool 'myJdk'
-         PATH="$dockerHome/bin:$mavenHome/bin:$myJdkHome/jdk-15.0.2/bin:$PATH"
+         PATH="$dockerHome/bin:$mavenHome/bin:$myJdkHome/jdk-15.0.2/bin"
        }
     stages {
         stage('build') {
