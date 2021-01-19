@@ -1,12 +1,17 @@
 pipeline {
   
-     agent any
+     agent 
+  {
+    docker
+    {
+      image 'adoptopenjdk/openjdk15'
+    }
+  }
        environment
        {
           dockerHome= tool 'myDocker'
           mavenHome= tool 'myMaven'
-          jdkHome= tool 'myJdk' 
-         PATH="$dockerHome/bin:$mavenHome/bin:$jdkHome/bin:$PATH"
+         PATH="$dockerHome/bin:$mavenHome/bin:$PATH"
        }
     stages {
         stage('build') {
