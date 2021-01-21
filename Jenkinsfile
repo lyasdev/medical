@@ -15,7 +15,7 @@ pipeline {
                 sh 'mvn clean install -Dmaven.test.skip=true'
             }
         }
-         stages {
+
         stage('Sacnner-Sonar-Qube') {
             def sonarQubeScannerHome= tool name:'mySonar',type:'hudson.plugins.sonar.SonarRunnerInstallation'
             withCredentials([string(credentialsId:'sonarToken',variable:'sonarLogin')]){
