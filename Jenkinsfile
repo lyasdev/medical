@@ -7,7 +7,7 @@ pipeline {
           mavenHome= tool 'myMaven'
           myJdkHome= tool 'myJdk'
           sonarQubeScannerHome= tool 'mySonar'
-         PATH="$dockerHome/bin:$mavenHome/bin:$myJdkHome/bin:$PATH"
+         PATH="$dockerHome/bin:$mavenHome/bin:$myJdkHome/bin:$sonarQubeScannerHome/bin: $PATH"
        }
     stages {
         stage('build') {
