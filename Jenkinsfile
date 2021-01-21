@@ -15,6 +15,13 @@ pipeline {
                 sh 'mvn clean install -Dmaven.test.skip=true'
             }
         }
+         stages {
+        stage('Sacnner-Sonar-Qube') {
+            def sonarQubeScannerHome= tool name:'mySonar',type:'hudson.plugins.sonar.SonarRunnerInstallation'
+            withCredentials([string(credentialsId:'sonarToken',variable:'sonarLogin')]){
+              sh "${sonarQubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sqube.centralus.cloudapp.azure.com:9000 -Dsonar.login=${sonarLogin} -Dsonar.projectName=medical -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=GS -Dsonar.sources=medical/src/main/ -Dsonar.tests=medical/src/test/ -Dsonar.language=java"
+            }
+        }
         stage('unit test') {
             steps {
                 sh 'mvn test' 
