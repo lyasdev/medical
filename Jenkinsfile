@@ -29,8 +29,6 @@ pipeline {
                -Dsonar.login=${sonarLogin} -Dsonar.projectName=medical \
                -Dsonar.projectVersion=${env.BUILD_NUMBER} \
                -Dsonar.projectKey=MD \
-               -Dsonar.sources=. \
-               -Dsonar.tests=. \
                -Dsonar.language=java"
             }
              }
