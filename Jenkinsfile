@@ -28,6 +28,7 @@ pipeline {
                -Dsonar.host.url=http://sqube.centralus.cloudapp.azure.com:9000 \
                -Dsonar.login=${sonarLogin} -Dsonar.projectName=medical \
                -Dsonar.projectVersion=${env.BUILD_NUMBER} \
+               sonar.java.binaries=**/target/classes  \
                -Dsonar.projectKey=MD \
                -Dsonar.language=java"
             }
