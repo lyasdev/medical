@@ -24,7 +24,14 @@ pipeline {
         stage('Sacnner-Sonar-Qube') {
              steps {
             withCredentials([string(credentialsId:'sonarToken',variable:'sonarLogin')]){
-              sh "${sonarQubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sqube.centralus.cloudapp.azure.com:9000 -Dsonar.login=${sonarLogin} -Dsonar.projectName=medical -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=medical -Dsonar.sources=./medical/src/** -Dsonar.tests=.medical/src/** -Dsonar.language=java"
+              sh "${sonarQubeScannerHome}/bin/sonar-scanner -e \
+               -Dsonar.host.url=http://sqube.centralus.cloudapp.azure.com:9000 \
+               -Dsonar.login=${sonarLogin} -Dsonar.projectName=medical \
+               -Dsonar.projectVersion=${env.BUILD_NUMBER} \
+               -Dsonar.projectKey=MD \
+               -Dsonar.sources=. \
+               -Dsonar.tests=. \
+               -Dsonar.language=java"
             }
              }
         }
