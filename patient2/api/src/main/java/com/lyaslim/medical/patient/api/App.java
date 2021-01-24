@@ -6,7 +6,7 @@ package com.lyaslim.medical.patient.api;
  */
 public class App 
 {
-    private String slimslim="";
+    private static String slimslim="";
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
