@@ -10,6 +10,8 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.lyaslim.medical.patient.domain.model.Sexe;
+
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -33,7 +35,13 @@ class PatientResourceITTest {
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath( "$",hasSize(2)))
                 .andExpect(jsonPath("$[0].firstName", is("BOURAHLA")))
-                .andExpect(jsonPath("$[1].firstName", is("SAID AISSA")));
+                .andExpect(jsonPath("$[0].lastName", is("Slimane")))
+                .andExpect(jsonPath("$[0].sexeId", is(Sexe.MALE.getId())))
+                .andExpect(jsonPath("$[0].sexeLabel", is(Sexe.MALE.getLabel())))
+                .andExpect(jsonPath("$[1].firstName", is("SAID AISSA")))
+                .andExpect(jsonPath("$[1].lastName", is("Lyes")))
+                .andExpect(jsonPath("$[1].sexeId", is(Sexe.MALE.getId())))
+                .andExpect(jsonPath("$[1].sexeLabel", is(Sexe.MALE.getLabel())));
     }
     @Test
     void shouldReturnOnePatientTest() throws Exception {
@@ -42,6 +50,9 @@ class PatientResourceITTest {
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.firstName", is("BOURAHLA")));
+                .andExpect(jsonPath("$.firstName", is("BOURAHLA")))
+                .andExpect(jsonPath("$.lastName", is("Slimane")))
+                .andExpect(jsonPath("$.sexeId", is(Sexe.MALE.getId())))
+                .andExpect(jsonPath("$.sexeLabel", is(Sexe.MALE.getLabel())));
     }
 }

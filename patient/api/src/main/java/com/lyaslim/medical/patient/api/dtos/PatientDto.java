@@ -1,11 +1,12 @@
 package com.lyaslim.medical.patient.api.dtos;
 
-import com.lyaslim.medical.patient.domain.model.Patient;
-import com.lyaslim.medical.patient.domain.model.Sexe;
-import lombok.Data;
-
 import java.time.LocalDate;
+
+import lombok.Data;
+import lombok.ToString;
+
 @Data
+@ToString
 public class PatientDto {
 
     private Long id;
@@ -13,5 +14,6 @@ public class PatientDto {
     private String lastName;
     private LocalDate dateOfBirth;
     private Integer sexeId;
+    private String sexeLabel;
 
 }
