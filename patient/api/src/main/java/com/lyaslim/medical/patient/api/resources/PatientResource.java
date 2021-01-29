@@ -1,5 +1,7 @@
 package com.lyaslim.medical.patient.api.resources;
 
+import com.lyaslim.medical.patient.api.dtos.PatientDto;
+import com.lyaslim.medical.patient.api.mappers.PatientMapper;
 import com.lyaslim.medical.patient.domain.model.Patient;
 import com.lyaslim.medical.patient.domain.ports.in.PatientUseCases;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +24,8 @@ public class PatientResource {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<Patient> get(@PathVariable Long id) {
-		return ResponseEntity.ok(service.find(id).orElseThrow(IllegalArgumentException::new));
+	public ResponseEntity<PatientDto> get(@PathVariable Long id) {
+		return ResponseEntity.ok(service.find(id).map(PatientMapper.INSTANCE::toDto).orElseThrow(IllegalArgumentException::new));
 	}
 	
 }
