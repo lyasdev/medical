@@ -1,4 +1,4 @@
-package com.lyaslim.medical.patient.domain.ports.in;
+package com.lyaslim.medical.commons.domain.ports.in;
 
 import java.util.Optional;
 
@@ -11,5 +11,7 @@ public interface CommonsUseCases<T, ID> {
 	T save(T entity);
 	
 	Iterable<T> saveAll(Iterable<T> entities);
+
+	void delete(ID id);
 	
 }

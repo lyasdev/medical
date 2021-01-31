@@ -4,8 +4,8 @@ public enum Sexe {
 
     MALE(1, "Masculin"), FEMALE(2, "Feminin");
 
-    private int id;
-    private String label;
+    private final int id;
+    private final String label;
 
     Sexe(int id, String label) {
         this.id = id;

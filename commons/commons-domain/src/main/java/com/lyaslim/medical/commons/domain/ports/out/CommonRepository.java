@@ -1,8 +1,8 @@
-package com.lyaslim.medical.patient.domain.ports.out;
+package com.lyaslim.medical.commons.domain.ports.out;
 
 import java.util.Optional;
 
-public interface MyRepository<T, ID> {
+public interface CommonRepository<T, ID> {
 
 	Optional<T> find(ID id);
 	
@@ -11,5 +11,6 @@ public interface MyRepository<T, ID> {
 	<S extends T> S save(S entity);
 	
 	<S extends T> Iterable<S> saveAll(Iterable<S> entities);
-	
+
+	void deleteById(ID id);
 }

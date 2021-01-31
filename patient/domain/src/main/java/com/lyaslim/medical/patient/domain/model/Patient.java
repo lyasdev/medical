@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import com.google.common.base.Preconditions;
 
 import lombok.Value;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Embedded;
 
 @Value

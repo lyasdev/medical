@@ -64,6 +64,21 @@
 				<artifactId>mapstruct</artifactId>
 				<version>${mapstruct.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.lyaslim.medical.commons</groupId>
+				<artifactId>commons-api</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.lyaslim.medical.commons</groupId>
+				<artifactId>commons-domain</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.lyaslim.medical.commons</groupId>
+				<artifactId>commons-infra</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -98,5 +113,6 @@
 	<modules>
 		<module>patient</module>
 		<module>app-conf</module>
+        <module>commons</module>
 	</modules>
 </project>

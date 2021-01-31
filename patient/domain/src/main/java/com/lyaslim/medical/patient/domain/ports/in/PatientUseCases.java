@@ -1,11 +1,13 @@
 package com.lyaslim.medical.patient.domain.ports.in;
 
+import com.lyaslim.medical.commons.domain.ports.in.AbstractCommonsUseCases;
+import com.lyaslim.medical.commons.domain.ports.in.CommonsUseCases;
+import com.lyaslim.medical.commons.domain.ports.out.CommonRepository;
 import com.lyaslim.medical.patient.domain.model.Patient;
-import com.lyaslim.medical.patient.domain.ports.out.MyRepository;
 
-public class PatientUseCases extends AbstractCommonsUseCases<Patient, Long> implements CommonsUseCases<Patient, Long> {	
+public class PatientUseCases extends AbstractCommonsUseCases<Patient, Long> implements CommonsUseCases<Patient, Long> {
 	
-	public PatientUseCases(MyRepository<Patient, Long> repository) {
+	public PatientUseCases(CommonRepository<Patient, Long> repository) {
 		super(repository);
 	}	
 

@@ -3,6 +3,12 @@ package com.lyaslim.medical.patient.api.resources;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.lyaslim.medical.commons.api.mappers.CommonMapper;
+import com.lyaslim.medical.commons.api.resources.AbstractResource;
+import com.lyaslim.medical.commons.domain.ports.in.CommonsUseCases;
+import com.lyaslim.medical.patient.domain.model.Patient;
+import com.lyaslim.medical.patient.domain.ports.out.PatientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,21 +23,10 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/patient")
-@RequiredArgsConstructor
-public class PatientResource {
+public class PatientResource extends AbstractResource<Patient, Long, PatientDto> {
 
-	private final PatientUseCases service;
-	
-	@GetMapping()
-	public ResponseEntity<Collection<PatientDto>> getAll() {
-		Collection<PatientDto> result = new ArrayList<>();
-		service.findAll().forEach(e -> result.add(PatientMapper.INSTANCE.toDto(e)));
-		return ResponseEntity.ok(result);
-	}
-	
-	@GetMapping("{id}")
-	public ResponseEntity<PatientDto> get(@PathVariable Long id) {
-		return ResponseEntity.ok(service.find(id).map(PatientMapper.INSTANCE::toDto).orElseThrow(IllegalArgumentException::new));
-	}
-	
+    protected PatientResource(PatientUseCases service) {
+        super(service,PatientMapper.INSTANCE);
+    }
+
 }

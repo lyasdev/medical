@@ -1,15 +1,15 @@
-package com.lyaslim.medical.patient.domain.ports.in;
+package com.lyaslim.medical.commons.domain.ports.in;
 
 import java.util.Optional;
 
-import com.lyaslim.medical.patient.domain.ports.out.MyRepository;
+import com.lyaslim.medical.commons.domain.ports.out.CommonRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class AbstractCommonsUseCases<T, ID> implements CommonsUseCases<T, ID> {
 
-	private final MyRepository<T, ID> repository;
+	private final CommonRepository<T, ID> repository;
 	
 	public Optional<T> find(ID id) {
 		return repository.find(id);
@@ -27,4 +27,7 @@ public class AbstractCommonsUseCases<T, ID> implements CommonsUseCases<T, ID> {
 		return repository.saveAll(entities);
 	}
 
+	public void delete (ID id){
+		repository.deleteById(id);
+	}
 }

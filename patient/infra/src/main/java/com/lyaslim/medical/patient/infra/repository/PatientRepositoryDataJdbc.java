@@ -30,4 +30,8 @@ public class PatientRepositoryDataJdbc implements PatientRepository {
 	public Iterable<Patient> findAll() {
 		return this.delegate.findAll();
 	}
+
+	public void deleteById(Long id){
+		this.delegate.deleteById(id);
+	}
 }
