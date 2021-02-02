@@ -95,5 +95,26 @@ class PatientResourceITTest {
 				.andExpect(status().isOk())
 				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 				.andExpect(jsonPath("$", hasSize(2)));
+		//Exception is not found
+		mockMvc.perform(get("/patient/3").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isNotFound())
+				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$.details[0]",is("Entity with id 3 not found ")));
+		//Exception invalid entity
+		patientDto = new PatientDto();
+		patientDto.setFirstName(null);
+		patientDto.setLastName("t");
+		patientDto.setDateOfBirth(null);
+		patientDto.setSexeId(null);
+		mockMvc.perform(post("/patient").contentType(MediaType.APPLICATION_JSON_VALUE)
+				.content(objectMapper.writeValueAsString(patientDto)).contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isUnprocessableEntity())
+				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$.details[0]",is("first name cannot be null")))
+				.andExpect(jsonPath("$.details[1]",is("last name length must be > 2")))
+				.andExpect(jsonPath("$.details[2]",is("date of birth cannot be null")))
+				.andExpect(jsonPath("$.details[3]",is("sexe cannot be null")))
+		;
+
 	}
 }

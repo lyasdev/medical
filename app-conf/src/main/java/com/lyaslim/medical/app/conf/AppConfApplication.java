@@ -1,5 +1,6 @@
 package com.lyaslim.medical.app.conf;
 
+import com.lyaslim.medical.commons.api.conf.EnableCommonsApiModule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,6 +16,7 @@ import com.lyaslim.medical.patient.infra.EnablePatientInfraModule;
 @EnablePatientInfraModule
 @EnablePatientDomainModule
 @EnablePatientApiModule
+@EnableCommonsApiModule
 public class AppConfApplication 
 {
     public static void main( String[] args )

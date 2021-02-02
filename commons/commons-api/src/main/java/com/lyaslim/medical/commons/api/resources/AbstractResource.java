@@ -7,18 +7,15 @@ import java.util.Collection;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import com.lyaslim.medical.commons.api.dtos.DtoToEntityMapper;
 import com.lyaslim.medical.commons.api.mappers.CommonMapper;
 import com.lyaslim.medical.commons.domain.ports.in.CommonsUseCases;
 
-public class AbstractResource<E,ID,D extends DtoToEntityMapper<E>>  {
+
+public class AbstractResource<E, ID, D extends DtoToEntityMapper<E>> {
     private final CommonsUseCases<E, ID> service;
 
     private final CommonMapper<E, D> mapper;
@@ -30,10 +27,10 @@ public class AbstractResource<E,ID,D extends DtoToEntityMapper<E>>  {
 
     @GetMapping
     public ResponseEntity<Collection<D>> getAll() {
-      final Collection<E> result=new ArrayList<>();
-      for(E entity : service.findAll()){
-          result.add(entity);
-      }
+        final Collection<E> result = new ArrayList<>();
+        for (E entity : service.findAll()) {
+            result.add(entity);
+        }
         return ResponseEntity.ok().body(result.stream().
                 map(mapper::toDto).collect(toList()));
     }
@@ -41,7 +38,8 @@ public class AbstractResource<E,ID,D extends DtoToEntityMapper<E>>  {
     @GetMapping("/{id}")
     public ResponseEntity<D> getById(@PathVariable ID id) {
         return ResponseEntity.ok()
-                .body(service.find(id).map(mapper::toDto).orElseThrow(IllegalArgumentException::new));
+                .body(service.find(id).map(mapper::toDto).orElseThrow(() ->
+                        new IllegalArgumentException(String.format("Entity with id %s not found ", id))));
     }
 
     @PostMapping
