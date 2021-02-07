@@ -30,7 +30,9 @@ pipeline {
                -Dsonar.projectVersion=${env.BUILD_NUMBER} \
                -Dsonar.java.binaries=**/target/classes  \
                -Dsonar.projectKey=MD \
-               -Dsonar.language=java"
+               -Dsonar.language=java \
+               -Dsonar.typescript.node = /usr/bin/nodejs" 
+              
             }
              }
         }
