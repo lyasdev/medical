@@ -13,9 +13,14 @@ public interface PatientMapper extends CommonMapper<Patient,PatientDto> {
 	
     PatientMapper INSTANCE = Mappers.getMapper(PatientMapper.class);
     
-    @Mapping(target = "sexeId", source = "sexe.id")
-    @Mapping(target = "sexeLabel", source = "sexe.label")
-    @Mapping(target = "dateOfBirth", dateFormat = "dd/MM/yyyy")
+    @Mapping(target = "sexeId", source = "person.sexe.id")
+    @Mapping(target = "sexeLabel", source = "person.sexe.label")
+    @Mapping(target = "dateOfBirth", source = "person.birthDate",dateFormat = "dd/MM/yyyy")
+    @Mapping(target = "firstName", source = "person.name.firstName")
+    @Mapping(target = "middleName", source = "person.name.middleName")
+    @Mapping(target = "lastName", source = "person.name.lastName")
+    @Mapping(target = "identityCardNumber", source = "person.identityCardNumber")
+    @Mapping(target = "bloodGroupId", source = "person.bloodGroup.id")
     PatientDto toDto(Patient patient);
 
 }

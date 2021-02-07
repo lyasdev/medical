@@ -1,18 +1,16 @@
 package com.lyaslim.medical.commons.api.resources;
 
-import static java.util.stream.Collectors.toList;
+import com.lyaslim.medical.commons.api.dtos.DtoToEntityMapper;
+import com.lyaslim.medical.commons.api.mappers.CommonMapper;
+import com.lyaslim.medical.commons.domain.ports.in.CommonsUseCases;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import com.lyaslim.medical.commons.api.dtos.DtoToEntityMapper;
-import com.lyaslim.medical.commons.api.mappers.CommonMapper;
-import com.lyaslim.medical.commons.domain.ports.in.CommonsUseCases;
+import static java.util.stream.Collectors.toList;
 
 
 public class AbstractResource<E, ID, D extends DtoToEntityMapper<E>> {

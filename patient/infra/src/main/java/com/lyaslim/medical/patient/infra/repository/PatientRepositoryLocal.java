@@ -7,4 +7,5 @@ import com.lyaslim.medical.patient.domain.model.Patient;
 
 @Repository
 public interface PatientRepositoryLocal extends CrudRepository<Patient, Long> {
+
 }
