@@ -31,7 +31,7 @@ pipeline {
                -Dsonar.java.binaries=**/target/classes  \
                -Dsonar.projectKey=MD \
                -Dsonar.language=java \
-               -Dsonar.typescript.node = /usr/bin/nodejs" 
+               -Dsonar.nodejs.executable=/usr/bin/nodejs" 
               
             }
              }
