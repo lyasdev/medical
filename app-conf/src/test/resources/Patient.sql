@@ -1,4 +1,4 @@
-
+DROP TABLE IF EXISTS CONSULTATION;
 DROP TABLE IF EXISTS PATIENT;
 CREATE TABLE PATIENT (
     id bigint(20) NOT NULL AUTO_INCREMENT,
@@ -12,7 +12,6 @@ CREATE TABLE PATIENT (
 
     PRIMARY KEY (id)
 );
-
 
 
 INSERT INTO PATIENT ( first_name,middle_name, last_name, birth_date, sexe, identity_card_number, blood_group)

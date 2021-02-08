@@ -30,4 +30,7 @@ public class AbstractCommonsUseCases<T, ID> implements CommonsUseCases<T, ID> {
 	public void delete (ID id){
 		repository.deleteById(id);
 	}
+	protected CommonRepository<T, ID> getRepository(){
+		return repository;
+	}
 }
