@@ -57,4 +57,10 @@ public class AbstractResource<E, ID, D extends DtoToEntityMapper<E>> {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
+    protected CommonsUseCases<E, ID> getService(){
+        return service;
+    }
+    protected  CommonMapper<E, D> getMapper(){
+        return mapper;
+    }
 }
