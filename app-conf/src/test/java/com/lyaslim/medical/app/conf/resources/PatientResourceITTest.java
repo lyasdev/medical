@@ -23,7 +23,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lyaslim.medical.patient.api.dtos.PatientDto;
 import com.lyaslim.medical.patient.domain.model.Sexe;
-
+@Sql("/Drop_Tables.sql")
 @Sql("/Patient.sql")
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -83,7 +83,6 @@ class PatientResourceITTest {
                 .content(objectMapper.writeValueAsString(patientDto)).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.firstName", is("test 2"))).andExpect(jsonPath("$.lastName", is("test 2")))
                 .andExpect(jsonPath("$.dateOfBirth", is("21/02/1985")))
                 .andExpect(jsonPath("$.sexeId", is(Sexe.MALE.getId())))
                 .andExpect(jsonPath("$.sexeLabel", is(Sexe.MALE.getLabel())));
