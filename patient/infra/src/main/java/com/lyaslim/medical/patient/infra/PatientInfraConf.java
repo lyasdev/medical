@@ -1,19 +1,13 @@
 package com.lyaslim.medical.patient.infra;
 
-import com.lyaslim.medical.patient.domain.ports.out.ConsultationRepository;
-import com.lyaslim.medical.patient.domain.ports.out.IConsultationRepository;
-import com.lyaslim.medical.patient.infra.repository.ConsultationDataJdbcRepository;
-import com.lyaslim.medical.patient.infra.repository.ConsultationRepositoryLocal;
+import com.lyaslim.medical.patient.domain.ports.out.*;
+import com.lyaslim.medical.patient.infra.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
-
-import com.lyaslim.medical.patient.domain.ports.out.PatientRepository;
-import com.lyaslim.medical.patient.infra.repository.PatientRepositoryDataJdbc;
-import com.lyaslim.medical.patient.infra.repository.PatientRepositoryLocal;
 
 /**
  * Hello world!
@@ -29,6 +23,12 @@ public class PatientInfraConf {
     @Autowired
     ConsultationRepositoryLocal consultationRepositoryLocal;
 
+    @Autowired
+    TraitementRepositoryLocal traitementRepositoryLocal;
+
+    @Autowired
+    MedicamentRepositoryLocal medicamentRepositoryLocal;
+
     @Bean
     PatientRepository createPatientRepository() {
 
@@ -38,5 +38,17 @@ public class PatientInfraConf {
     @Bean
     IConsultationRepository createConsultationRepository() {
         return new ConsultationDataJdbcRepository(consultationRepositoryLocal);
+    }
+
+    @Bean
+    TraitementRepository createTraitementRepository() {
+
+        return new TraitementRepositoryDataJdbc(traitementRepositoryLocal);
+    }
+
+    @Bean
+    MedicamentRepository createMedicamentRepository() {
+
+        return new MedicamentRepositoryDataJdbc(medicamentRepositoryLocal);
     }
 }

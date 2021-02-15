@@ -2,12 +2,9 @@ package com.lyaslim.medical.patient.api.resources;
 
 import com.lyaslim.medical.commons.api.resources.AbstractResource;
 import com.lyaslim.medical.patient.api.dtos.ConsultationDto;
-import com.lyaslim.medical.patient.api.dtos.PatientDto;
 import com.lyaslim.medical.patient.api.mappers.ConsultationMapper;
 import com.lyaslim.medical.patient.api.mappers.PatientMapper;
 import com.lyaslim.medical.patient.domain.model.Consultation;
-import com.lyaslim.medical.patient.domain.model.Patient;
-import com.lyaslim.medical.patient.domain.ports.in.ConsultationUseCases;
 import com.lyaslim.medical.patient.domain.ports.in.IConsultationUseCases;
 import com.lyaslim.medical.patient.domain.ports.in.PatientUseCases;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +22,13 @@ import static java.util.stream.Collectors.toList;
 @RequestMapping("/consultations")
 public class ConsultationResource extends AbstractResource<Consultation, Long, ConsultationDto> {
     private final IConsultationUseCases service;
-
-    protected ConsultationResource(IConsultationUseCases service) {
+    private final PatientUseCases patientService;
+    private final PatientMapper patientMapper;
+    protected ConsultationResource(IConsultationUseCases service, PatientUseCases patientService) {
         super(service, ConsultationMapper.INSTANCE);
         this.service = service;
+        this.patientService = patientService;
+        this.patientMapper=PatientMapper.INSTANCE;
     }
 
     @GetMapping("/patients/{id}")
@@ -39,5 +39,16 @@ public class ConsultationResource extends AbstractResource<Consultation, Long, C
         }
         return ResponseEntity.ok().body(result.stream().
                 map(getMapper()::toDto).collect(toList()));
+    }
+
+    @GetMapping("/{id}/with-patient")
+    public ResponseEntity<ConsultationDto> getConsultationWithPatient(@PathVariable Long id) {
+        ConsultationDto consultationDto = service.find(id).map(getMapper()::toDto).get();
+        consultationDto.setPatient(
+                this.patientMapper.toDto(
+                        patientService.find(consultationDto.getPatientId()).get())
+               );
+        return ResponseEntity.ok()
+                .body(consultationDto);
     }
 }

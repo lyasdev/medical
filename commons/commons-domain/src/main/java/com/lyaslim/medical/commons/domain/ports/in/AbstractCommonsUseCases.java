@@ -16,6 +16,7 @@ public class AbstractCommonsUseCases<T, ID> implements CommonsUseCases<T, ID> {
 	}
 
 	public Iterable<T> findAll() {
+
 		return repository.findAll();
 	}
 
