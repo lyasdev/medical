@@ -20,8 +20,4 @@ export class ShellComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
-  isLoggedIn(): boolean {
-    return this.auth.isLoggedIn();
-  }
-
 }

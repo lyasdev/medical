@@ -1,0 +1,12 @@
+<p-menubar [model]="items" >
+  <ng-template pTemplate="start">
+    <img src="assets/logo.png" height="40" class="p-mr-2">
+  </ng-template>
+  <div class="p-d-flex">
+    <div class="p-mr-2"><input type="text" pInputText placeholder="Search"></div>
+    <div class="p-mr-2">
+      <button pButton label="Logout" icon="pi pi-power-off" (click)="logout()"></button>
+      <p-avatar image="assets/unnamed.png" styleClass="p-mr-2" shape="circle"></p-avatar>
+    </div>
+  </div>
+</p-menubar>
