@@ -6,7 +6,8 @@ import { AuthService } from './core/auth.service';
 import { ShellComponent } from './shell/shell.component';
 
 const routes: Routes = [
-  {path: '', component: ShellComponent, canActivate: [AuthGuard]}
+  {path: '', redirectTo: '/accueil', pathMatch: 'full'},
+  {path: 'accueil', component: ShellComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
