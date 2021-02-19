@@ -1,0 +1,110 @@
+<div class="card">
+  <p-tabView orientation="left">
+    <p-tabPanel >
+      <ng-template pTemplate="header">
+        <i class="pi pi-calendar"></i>
+        <span>Détails du patient</span>
+      </ng-template>
+      <div class="p-grid">
+        <div class="p-col-fixed" style="width:300px">
+          <img src="assets/logo.png" class="p-mr-2">
+
+        </div>
+        <div class="p-col">
+          <!----Contenu du formulaire-->
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-md-4">
+              <span class="p-float-label">
+                <input  class="p-inputtext-sm"  id="firstname" type="text" pInputText>
+                <label for="firstname">Nom</label>
+              </span>
+            </div>
+            <div class="p-field p-col-12 p-md-4">
+               <span class="p-float-label">
+                  <input  class="p-inputtext-sm"  id="lastname" type="text" pInputText>
+                  <label for="lastname">Prénom</label>
+               </span>
+            </div>
+            <div class="p-field p-col-4">
+               <span class="p-float-label">
+                 <input   class="p-inputtext-sm" id="middlename" type="text" pInputText>
+                 <label for="middlename">Surnom</label>
+               </span>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <span class="p-float-label">
+                 <p-calendar  class="p-inputtext-sm" [showIcon]="true" inputId="dateofbirth"></p-calendar>
+                 <!--suppress XmlInvalidId -->
+                <label for="dateofbirth">date de naissance :</label>
+              </span>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+                 <span class="p-float-label">
+                   <input  class="p-inputtext-sm" id="identotycardnumber" type="text" pInputText>
+                    <label for="identotycardnumber">N° CIN</label>
+                 </span>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+               <span class="p-float-label">
+                 <p-dropdown  class="p-inputtext-sm" id="sexe" [options]="sexes"
+                              optionLabel="name" [showClear]="true"></p-dropdown>
+                   <label for="sexe">Sexe</label>
+               </span>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <span class="p-float-label">
+                 <p-dropdown  class="p-inputtext-sm"id="groupsg" [options]="groupsg"
+                             optionLabel="name" [showClear]="true"></p-dropdown>
+                   <label for="groupsg">Groupe sanguin</label>
+               </span>
+            </div>
+            <div class="p-field p-col-12">
+              <span class="p-float-label">
+              <textarea  class="p-inputtext-sm" id="address" type="text" rows="2" pInputTextarea></textarea>
+                <label for="address">Address</label>
+              </span>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <span class="p-float-label">
+                 <input  class="p-inputtext-sm" id="city" type="text" pInputText>
+                 <label for="city">City</label>
+              </span>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <span class="p-float-label">
+              <input  class="p-inputtext-sm" id="zip" type="text" pInputText>
+              <label for="zip">Zip</label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Header II">
+      <ng-template pTemplate="header">
+        <i class="pi pi-user"></i>
+        <span>Histroique des consultations</span>
+      </ng-template>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+        aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+        aut fugit, sed quia consequuntur magni dolores eos qui ratione
+        voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.</p>
+    </p-tabPanel>
+    <p-tabPanel header="Header III">
+      <ng-template pTemplate="header">
+        <i class="pi pi-search"></i>
+        <span>Header III</span>
+        <i class="pi pi-cog"></i>
+      </ng-template>
+      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
+        corrupti quos dolores et quas molestias excepturi sint occaecati
+        cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+        fuga. Et harum quidem rerum facilis est et expedita distinctio.
+        Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
+    </p-tabPanel>
+  </p-tabView>
+</div>
+
+

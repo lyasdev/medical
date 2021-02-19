@@ -1,12 +1,31 @@
-<p-menubar [model]="items" >
+<p-menubar  [model]="items" >
   <ng-template pTemplate="start">
-    <img src="assets/logo.png" height="40" class="p-mr-2">
+      <div class="p-mr-2 p-order-3 p-order-md-2">
+        <img src="assets/logo.png" height="30px" class="p-mr-2">
+      </div>
   </ng-template>
+
   <div class="p-d-flex">
-    <div class="p-mr-2"><input type="text" pInputText placeholder="Search"></div>
     <div class="p-mr-2">
-      <button pButton label="Logout" icon="pi pi-power-off" (click)="logout()"></button>
-      <p-avatar image="assets/unnamed.png" styleClass="p-mr-2" shape="circle"></p-avatar>
+      <button  pButton pRipple  type="button" icon="pi pi-calendar " class="p-button-rounded p-button-info p-button-text">
+        <i class="event-no" pBadge  value="2" severity="danger"></i>
+      </button>
+      <button pButton pRipple type="button" icon="pi pi-bell " class="p-button-rounded p-button-warning p-button-text">
+        <i class="event-no" pBadge  value="1" severity="danger"></i>
+      </button>
+      <button pButton pRipple type="button" icon="pi pi-envelope " class="p-button-rounded p-button-danger p-button-text">
+        <i class="event-no" pBadge  value="5" severity="danger"></i>
+      </button>
+      <span class="p-float-label p-input-icon-right">
+    <i class="pi  pi-search"></i>
+    <input id="lastname" width="450px" class="p-inputtext-sm" type="text" pInputText />
+             <label for="lastname">Chercher</label>
+        </span>
+    </div>
+    <div class="p-mr-2">
+      <button pButton pRipple type="button" icon="pi pi-power-off " class="p-button-rounded p-button-danger p-button-text"
+      (click)="logout()"></button>
+      <!--<p-avatar image="assets/unnamed.png" shape="circle"></p-avatar>-->
     </div>
   </div>
 </p-menubar>

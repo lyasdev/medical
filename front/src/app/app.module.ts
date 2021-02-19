@@ -10,6 +10,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FakeBackEndService } from './fake-back-end.service';
 import { CONFIG } from './app.config';
 import { ShellComponent } from './shell/shell.component';
+import { PatientModule } from './patient/patient.module';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,8 @@ import { ShellComponent } from './shell/shell.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CoreModule, 
-    CoreRoutingModule,
+    CoreModule,
+    CoreRoutingModule, PatientModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: FakeBackEndService, multi: true},
               ...CONFIG],

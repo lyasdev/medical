@@ -8,4 +8,5 @@ import { AuthService } from './core/auth.service';
 })
 export class AppComponent {
   title = 'medical';
+
 }
