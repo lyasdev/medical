@@ -24,7 +24,8 @@ export class NavbarComponent implements OnInit {
 
           {
             label: 'Nouveau',
-            icon: 'pi pi-fw pi-plus'
+            icon: 'pi pi-fw pi-plus',
+            command: () => this.goTopatient()
           },
           {label: 'Liste', icon: 'pi pi-fw pi-list'},
         ]
@@ -44,5 +45,8 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     this.auth.logout();
     this.router.navigateByUrl('/');
+  }
+  goTopatient() : void {
+    this.router.navigateByUrl('patient');
   }
 }
