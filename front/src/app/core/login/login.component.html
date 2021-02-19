@@ -1,0 +1,26 @@
+<div class="container">
+    <p-card header="Page de Connexion" subheader="Veuillez saisir votre mot de passe et login" 
+                    class="card-container" styleClass="p-card-shadow">
+        <ng-template pTemplate="header">
+        </ng-template>
+        <form [formGroup]="form">
+            <div class="p-fluid">
+                <div class="p-field p-grid">
+                    <label for="login" class="p-col-12 p-mb-3 p-md-3 p-mb-md-0">Login</label>
+                    <div class="p-col-12 p-md-9">
+                        <input id="login" type="text" formControlName="login" pInputText> 
+                    </div>
+                </div>
+                <div class="p-field p-grid">
+                    <label for="password" class="p-col-12 p-mb-3 p-md-3 p-mb-md-0">Password</label>
+                    <div class="p-col-12 p-md-9">
+                        <input id="password" type="password" formControlName="password" pInputText> 
+                    </div>
+                </div>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <p-button [disabled]="form.invalid" (click)="login()" label="Login"></p-button>
+        </ng-template>
+    </p-card>
+</div>
