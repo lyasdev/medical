@@ -37,7 +37,7 @@ class PatientResourceITTest {
     @Test
     void patientResourceTest() throws Exception {
         // all
-        mockMvc.perform(get("/patient").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+        mockMvc.perform(get("/patients").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$", hasSize(2))).andExpect(jsonPath("$[0].firstName", is("BOURAHLA")))
                 .andExpect(jsonPath("$[0].lastName", is("Slimane")))
@@ -51,7 +51,7 @@ class PatientResourceITTest {
                 .andExpect(jsonPath("$[1].sexeLabel", is(Sexe.MALE.getLabel())));
 
         // one
-        mockMvc.perform(get("/patient/1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+        mockMvc.perform(get("/patients/1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.firstName", is("BOURAHLA"))).andExpect(jsonPath("$.lastName", is("Slimane")))
                 .andExpect(jsonPath("$.sexeId", is(Sexe.MALE.getId())))
@@ -65,7 +65,7 @@ class PatientResourceITTest {
         patientDto.setSexeId(2);
         patientDto.setBloodGroupId(2);
         patientDto.setIdentityCardNumber("1209876543");
-        mockMvc.perform(post("/patient").contentType(MediaType.APPLICATION_JSON_VALUE)
+        mockMvc.perform(post("/patients").contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(patientDto)).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -79,7 +79,7 @@ class PatientResourceITTest {
         patientDto.setLastName("test 2");
         patientDto.setDateOfBirth("21/02/1985");
         patientDto.setSexeId(1);
-        mockMvc.perform(put("/patient").contentType(MediaType.APPLICATION_JSON_VALUE)
+        mockMvc.perform(put("/patients").contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(patientDto)).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -88,16 +88,16 @@ class PatientResourceITTest {
                 .andExpect(jsonPath("$.sexeLabel", is(Sexe.MALE.getLabel())));
 
         // delete
-        mockMvc.perform(delete("/patient/3").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(delete("/patients/3").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent());
 
         // all
-        mockMvc.perform(get("/patient").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/patients").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$", hasSize(2)));
         //Exception is not found
-        mockMvc.perform(get("/patient/3").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/patients/3").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.details[0]", is("Entity with id 3 not found ")));
@@ -107,7 +107,7 @@ class PatientResourceITTest {
         patientDto.setLastName("t");
         patientDto.setDateOfBirth(null);
         patientDto.setSexeId(null);
-        mockMvc.perform(post("/patient").contentType(MediaType.APPLICATION_JSON_VALUE)
+        mockMvc.perform(post("/patients").contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(patientDto)).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isUnprocessableEntity())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))

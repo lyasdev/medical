@@ -1,7 +1,5 @@
 package com.lyaslim.medical.patient.domain.model;
 
-import java.util.stream.Stream;
-
 public enum BloodGroup {
     O_NEG (1, "O-"),
     O_POS (2, "O+"),
@@ -32,9 +30,9 @@ public enum BloodGroup {
     }
 
     public static BloodGroup from(int id){
-        if (id <= 0 || id > BloodGroup.values().length) {
+        if (id <= 0 || id > VALUES.length) {
             throw new IllegalArgumentException();
         }
-        return BloodGroup.values()[id - 1];
+        return VALUES[id - 1];
     }
 }

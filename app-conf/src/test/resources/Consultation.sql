@@ -1,11 +1,11 @@
 
-CREATE TABLE CONSULTATION(
-id bigint(20) NOT NULL AUTO_INCREMENT,
-date DATE NOT NULL,
-histoire_maladie VARCHAR(MAX),
-patient_id bigint(20) NOT NULL,
-  PRIMARY KEY (id),
-  foreign key (patient_id) references PATIENT(id)
+CREATE TABLE CONSULTATION (
+	id integer auto_increment NOT NULL,
+	date DATE NOT NULL,
+	histoire_maladie VARCHAR(2056),
+	patient_id bigint NOT NULL,
+	CONSTRAINT consultation_pk PRIMARY KEY (id),
+	foreign key (patient_id) references PATIENT(id)
 );
 
 INSERT INTO CONSULTATION (date,histoire_maladie,patient_id)

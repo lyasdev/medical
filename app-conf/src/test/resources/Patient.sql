@@ -1,6 +1,6 @@
 
 CREATE TABLE PATIENT (
-    id bigint(20) NOT NULL AUTO_INCREMENT,
+    id integer auto_increment NOT NULL,
     first_name VARCHAR(128) NOT NULL,
     middle_name VARCHAR(100) NULL,
     last_name VARCHAR(128) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE PATIENT (
     identity_card_number VARCHAR(100)  NULL,
     blood_group INTEGER NULL,
 
-    PRIMARY KEY (id)
+    CONSTRAINT patient_pk PRIMARY KEY (id)
 );
 
 
