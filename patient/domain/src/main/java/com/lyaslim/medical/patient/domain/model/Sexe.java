@@ -3,6 +3,8 @@ package com.lyaslim.medical.patient.domain.model;
 public enum Sexe {
 
     MALE(1, "Masculin"), FEMALE(2, "Feminin");
+	
+	private static final Sexe[] VALUES = Sexe.values();
 
     private final int id;
     private final String label;
@@ -21,9 +23,9 @@ public enum Sexe {
     }
 
     public static Sexe from(int id){
-    	if (id <= 0 || id > Sexe.values().length) {
+    	if (id <= 0 || id > VALUES.length) {
     		throw new IllegalArgumentException();
     	}
-        return Sexe.values()[id - 1];
+        return VALUES[id - 1];
     }
 }

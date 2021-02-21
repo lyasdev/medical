@@ -1,12 +1,12 @@
 
-CREATE TABLE MEDICAMENT(
-id bigint(20) NOT NULL AUTO_INCREMENT,
-dci VARCHAR(100) NOT NULL,
-nom_commercial VARCHAR(200) NOT NULL,
-description VARCHAR(200) NOT NULL,
-indications VARCHAR(200) NULL,
-contre_indication VARCHAR(200) NULL,
-PRIMARY KEY (id)
+CREATE TABLE MEDICAMENT (
+	id integer auto_increment NOT NULL,
+	dci VARCHAR(100) NOT NULL,
+	nom_commercial VARCHAR(200) NOT NULL,
+	description VARCHAR(200) NOT NULL,
+	indications VARCHAR(200) NULL,
+	contre_indication VARCHAR(200) NULL,
+	CONSTRAINT medicament_pk PRIMARY KEY (id)
 );
 
 INSERT INTO MEDICAMENT (dci,nom_commercial, description, indications, contre_indication)

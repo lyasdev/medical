@@ -22,7 +22,7 @@ import com.lyaslim.medical.patient.domain.ports.in.PatientUseCases;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/patient")
+@RequestMapping("/patients")
 public class PatientResource extends AbstractResource<Patient, Long, PatientDto> {
 
     protected PatientResource(PatientUseCases service) {
