@@ -20,13 +20,13 @@ import static java.util.stream.Collectors.toList;
 
 @RestController
 @RequestMapping("/consultations")
-public class ConsultationResource extends AbstractResource<Consultation, Long, ConsultationDto> {
-    private final IConsultationUseCases service;
+public class ConsultationResource extends AbstractResource<Consultation, Long, IConsultationUseCases, ConsultationDto> {
+    
     private final PatientUseCases patientService;
     private final PatientMapper patientMapper;
+    
     protected ConsultationResource(IConsultationUseCases service, PatientUseCases patientService) {
         super(service, ConsultationMapper.INSTANCE);
-        this.service = service;
         this.patientService = patientService;
         this.patientMapper=PatientMapper.INSTANCE;
     }
@@ -34,16 +34,16 @@ public class ConsultationResource extends AbstractResource<Consultation, Long, C
     @GetMapping("/patients/{id}")
     public ResponseEntity<Collection<ConsultationDto>> getAllByPatient(@PathVariable Long id) {
         final Collection<Consultation> result = new ArrayList<>();
-        for (Consultation entity : service.findByPatient(id)) {
+        for (Consultation entity : super.service.findByPatient(id)) {
             result.add(entity);
         }
         return ResponseEntity.ok().body(result.stream().
-                map(getMapper()::toDto).collect(toList()));
+                map(super.mapper::toDto).collect(toList()));
     }
 
     @GetMapping("/{id}/with-patient")
     public ResponseEntity<ConsultationDto> getConsultationWithPatient(@PathVariable Long id) {
-        ConsultationDto consultationDto = service.find(id).map(getMapper()::toDto).get();
+        ConsultationDto consultationDto = service.find(id).map(super.mapper::toDto).get();
         consultationDto.setPatient(
                 this.patientMapper.toDto(
                         patientService.find(consultationDto.getPatientId()).get())

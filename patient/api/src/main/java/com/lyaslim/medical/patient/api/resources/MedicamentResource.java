@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/medicaments")
-public class MedicamentResource extends AbstractResource<Medicament, Long, MedicamentDto> {
+public class MedicamentResource extends AbstractResource<Medicament, Long, MedicamentUseCases, MedicamentDto> {
 
     protected MedicamentResource(MedicamentUseCases service) {
         super(service, MedicamentMapper.INSTANCE);

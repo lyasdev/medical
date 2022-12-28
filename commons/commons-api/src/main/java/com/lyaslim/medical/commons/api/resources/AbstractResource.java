@@ -13,12 +13,12 @@ import java.util.Collection;
 import static java.util.stream.Collectors.toList;
 
 
-public class AbstractResource<E, ID, D extends DtoToEntityMapper<E>> {
-    private final CommonsUseCases<E, ID> service;
+public class AbstractResource<E, ID, S extends CommonsUseCases<E, ID>, D extends DtoToEntityMapper<E>> {
+    protected final S service;
 
-    private final CommonMapper<E, D> mapper;
+    protected final CommonMapper<E, D> mapper;
 
-    protected AbstractResource(CommonsUseCases<E, ID> service, CommonMapper<E, D> mapper) {
+    protected AbstractResource(S service, CommonMapper<E, D> mapper) {
         this.service = service;
         this.mapper = mapper;
     }
@@ -57,10 +57,5 @@ public class AbstractResource<E, ID, D extends DtoToEntityMapper<E>> {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
-    protected CommonsUseCases<E, ID> getService(){
-        return service;
-    }
-    protected  CommonMapper<E, D> getMapper(){
-        return mapper;
-    }
+    
 }

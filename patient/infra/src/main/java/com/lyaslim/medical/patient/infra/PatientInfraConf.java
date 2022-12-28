@@ -36,7 +36,7 @@ public class PatientInfraConf {
     }
 
     @Bean
-    IConsultationRepository createConsultationRepository() {
+    ConsultationRepository createConsultationRepository() {
         return new ConsultationDataJdbcRepository(consultationRepositoryLocal);
     }
 
