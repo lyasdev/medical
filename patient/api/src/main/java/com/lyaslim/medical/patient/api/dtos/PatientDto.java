@@ -13,24 +13,24 @@ import lombok.ToString;
 @ToString
 public class PatientDto implements DtoToEntityMapper<Patient> {
 
-    private Long id;
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private String dateOfBirth;
-    private Integer sexeId;
-    private String sexeLabel;
-    private String identityCardNumber;
-    private Integer bloodGroupId;
-    @Override
-    public Patient toEntity() {
-        var dob  = Objects.isNull(dateOfBirth) ? null: LocalDate.parse(dateOfBirth,
-                DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        var sexe = Objects.isNull(sexeId) ? null : Sexe.from(sexeId);
-        var blood = Objects.isNull(bloodGroupId) ? null : BloodGroup.from(bloodGroupId);
-        Name name= Name.of(firstName, middleName,lastName);
-        Person person =Person.of(name,dob,sexe,blood,
-                identityCardNumber);
-        return Patient.of(id,person);
-    }
+	private Long id;
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	private String dateOfBirth;
+	private Integer sexeId;
+	private String sexeLabel;
+	private String identityCardNumber;
+	private Integer bloodGroupId;
+
+	@Override
+	public Patient toEntity() {
+		var dob = Objects.isNull(dateOfBirth) ? null
+				: LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		var sexe = Objects.isNull(sexeId) ? null : Sexe.from(sexeId);
+		var blood = Objects.isNull(bloodGroupId) ? null : BloodGroup.from(bloodGroupId);
+		Name name = new Name(firstName, middleName, lastName);
+		Person person = new Person(name, dob, sexe, blood, identityCardNumber);
+		return Patient.of(id, person);
+	}
 }

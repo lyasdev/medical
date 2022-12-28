@@ -15,7 +15,8 @@ import com.lyaslim.medical.patient.domain.model.Sexe;
 
 @Configuration
 public class DataJdbcConf extends AbstractJdbcConfiguration {
-    @Override
+    
+	@Override
     public JdbcCustomConversions jdbcCustomConversions() {
 
         return new JdbcCustomConversions(List.of(SexeWriter.INSTANCE, SexeReader.INSTANCE, BloodWriter.INSTANCE,
@@ -47,7 +48,6 @@ public class DataJdbcConf extends AbstractJdbcConfiguration {
 
     }
 
-    //
     @WritingConverter
     enum BloodWriter implements Converter<BloodGroup, String> {
 
@@ -72,7 +72,6 @@ public class DataJdbcConf extends AbstractJdbcConfiguration {
 
     }
 
-    //
     @WritingConverter
     enum TypeTrtWriter implements Converter<TypeTraitement, String> {
 

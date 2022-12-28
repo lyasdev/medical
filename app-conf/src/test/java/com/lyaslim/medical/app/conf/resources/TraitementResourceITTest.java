@@ -60,9 +60,9 @@ class TraitementResourceITTest {
         MedicamentDto medicamentDto =new MedicamentDto();
         medicamentDto.setId(2L);
         medicamentDto.setDci("PARACETAMOL");
-        medicamentDto.setNom_commercial("EFFERALGAN");
+        medicamentDto.setNomCommercial("EFFERALGAN");
         medicamentDto.setIndications("AVANT LES REPAS");
-        medicamentDto.setContre_indication("NE PAS UTILISER DANS LE CAS D''UNE ALLERGIE");
+        medicamentDto.setContreIndication("NE PAS UTILISER DANS LE CAS D''UNE ALLERGIE");
         traitementDtos.setMedicaments(Set.of(medicamentDto));
 
         mockMvc.perform(post("/traitements").contentType(MediaType.APPLICATION_JSON_VALUE)

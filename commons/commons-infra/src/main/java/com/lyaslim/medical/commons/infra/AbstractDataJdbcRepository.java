@@ -7,9 +7,9 @@ import org.springframework.data.repository.Repository;
 
 import java.util.Optional;
 @RequiredArgsConstructor
-public class AbstractDataJdbcRepository<T, ID> implements CommonRepository<T, ID> {
+public class AbstractDataJdbcRepository<T, ID, CR extends CrudRepository<T, ID>> implements CommonRepository<T, ID> {
 
-    private final CrudRepository<T, ID> delegate;
+    protected final CR delegate;
 
     public <S extends T> S save(S entity) {
         return this.delegate.save(entity);

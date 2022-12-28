@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.lyaslim.medical</groupId>
         <artifactId>patient</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${medical.project.version}</version>
     </parent>
     <groupId>com.lyaslim.medical.patient</groupId>
     <artifactId>api</artifactId>
@@ -20,7 +20,6 @@
         <dependency>
             <groupId>com.lyaslim.medical.patient</groupId>
             <artifactId>domain</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

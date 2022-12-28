@@ -1,22 +1,17 @@
 package com.lyaslim.medical.patient.domain.ports.in;
 
 import com.lyaslim.medical.commons.domain.ports.in.AbstractCommonsUseCases;
-import com.lyaslim.medical.commons.domain.ports.in.CommonsUseCases;
-import com.lyaslim.medical.commons.domain.ports.out.CommonRepository;
 import com.lyaslim.medical.patient.domain.model.Consultation;
-import com.lyaslim.medical.patient.domain.model.Patient;
-import com.lyaslim.medical.patient.domain.ports.out.IConsultationRepository;
+import com.lyaslim.medical.patient.domain.ports.out.ConsultationRepository;
 
-public class ConsultationUseCases extends AbstractCommonsUseCases<Consultation, Long> implements IConsultationUseCases {
-    private final IConsultationRepository repository;
+public class ConsultationUseCases extends AbstractCommonsUseCases<Consultation, Long, ConsultationRepository> implements IConsultationUseCases {
 
-    public ConsultationUseCases(IConsultationRepository repository) {
+    public ConsultationUseCases(ConsultationRepository repository) {
         super(repository);
-        this.repository = repository;
     }
 
     @Override
     public Iterable<Consultation> findByPatient(Long id) {
-        return repository.findByPatient(id);
+        return super.repository.findByPatient(id);
     }
 }

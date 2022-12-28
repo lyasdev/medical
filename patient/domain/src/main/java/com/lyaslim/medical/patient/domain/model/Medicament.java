@@ -27,6 +27,7 @@ public class Medicament {
         this.contre_indication = contre_indication;
         checkValidity();
     }
+    
     public void checkValidity() {
         List<String> errors = new ArrayList<>();
         Checker.check(errors, "dci cannot be null", Objects.isNull(dci));

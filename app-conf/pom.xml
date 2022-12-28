@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>com.lyaslim</groupId>
 		<artifactId>medical</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${medical.project.version}</version>
 	</parent>
 	<groupId>com.lyaslim.medical</groupId>
 	<artifactId>app-conf</artifactId>
@@ -21,17 +21,17 @@
 		<dependency>
 			<groupId>com.lyaslim.medical.patient</groupId>
 			<artifactId>domain</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${medical.project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.lyaslim.medical.patient</groupId>
 			<artifactId>infra</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${medical.project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.lyaslim.medical.patient</groupId>
 			<artifactId>api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${medical.project.version}</version>
 		</dependency>
 
 	</dependencies>

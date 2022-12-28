@@ -1,20 +1,20 @@
 package com.lyaslim.medical.patient.api.dtos;
 
-import com.lyaslim.medical.commons.api.dtos.DtoToEntityMapper;
-import com.lyaslim.medical.patient.api.mappers.ConsultationMapper;
-import com.lyaslim.medical.patient.domain.model.*;
-import lombok.Data;
-import lombok.ToString;
+import static java.util.stream.Collectors.toSet;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.*;
+import com.lyaslim.medical.commons.api.dtos.DtoToEntityMapper;
+import com.lyaslim.medical.patient.domain.model.MedicamentRef;
+import com.lyaslim.medical.patient.domain.model.Traitement;
+import com.lyaslim.medical.patient.domain.model.TypeTraitement;
+
+import lombok.Data;
+import lombok.ToString;
 
 @Data
 @ToString
